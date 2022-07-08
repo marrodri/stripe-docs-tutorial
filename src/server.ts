@@ -1,12 +1,13 @@
 // strip secret API KEY
+export {}
 const stripe = require('stripe')(import.meta.env.VITE_STRIPE_SECRET_KEY)
 const express = require('express')
 const app = express()
 app.use(express.static('public'))
 
-const YOUR_DOMAIN = 'http://localhost:3000'
+const YOUR_DOMAIN = 'https://localhost:3000'
 
-app.post('create-checkout-session', async (req, res) => {
+app.post('create-checkout-session', async (req : any, res:any) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [],
     mode: 'payment',
